@@ -32,10 +32,11 @@ const Page = () => {
       const checkSubmission = localStorage.getItem('isReviewSubmitted');
       if (checkSubmission === 'true') {
         setHasSubmitted(true);
+        router.push('/thank'); 
       }
     }, 0);
     return () => clearTimeout(timer);
-  }, []);
+  }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -112,14 +113,7 @@ const Page = () => {
   if (!isMounted) return null;
 
   if (hasSubmitted) {
-    return (
-      <main className='flex justify-center items-center min-h-lvh p-4 bg-[#fcfaf9] text-[#0f172a]'>
-        <div className='w-full max-w-md bg-white border border-gray-100 shadow-sm flex flex-col p-8 sm:p-10 rounded-2xl text-center'>
-          <h2 className='text-2xl font-bold mb-4 text-[#c25934]'>Thank You!</h2>
-          <p className='text-gray-600 font-medium'>You have already submitted a review.</p>
-        </div>
-      </main>
-    );
+    return null;
   }
 
   return (
