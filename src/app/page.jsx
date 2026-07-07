@@ -160,13 +160,14 @@ const Page = () => {
             className='w-full border border-gray-200 bg-white text-gray-800 rounded-md h-36 py-2 px-3 mb-4 focus:outline-none focus:ring-2 focus:ring-[#c25934] resize-y'
             placeholder='Write About Venetus Interiors Service......'
           ></textarea>
-
+          <div className="w-full [&>label]:w-full! [&>label]:max-w-full! [&>label]:min-w-0! [&>label]:border-[#c25934]! [&>label]:border-2! [&>label]:border-dashed! hover:[&>label]:bg-orange-50! transition-colors">
           <FileUploader
             multiple={true}
             handleChange={handleChange}
             name="file"
             types={fileTypes}
           />
+          </div>
           <p className="mt-2 text-sm text-gray-500">
             {file ? `${file.length} file(s) selected` : "No files uploaded yet"}
           </p>
