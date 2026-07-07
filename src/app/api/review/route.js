@@ -5,7 +5,7 @@ export async function POST(request) {
     try {
         await ConnectToDB();
 
-        const { name, rating, review } = await request.json();
+        const { name, rating, review , images} = await request.json();
 
         if (!name || !rating || !review) {
             return Response.json({ 
@@ -17,7 +17,8 @@ export async function POST(request) {
         const newReview = await Review.create({
             name,
             rating,
-            review
+            review,
+            images,
         });
 
         return Response.json({ 
