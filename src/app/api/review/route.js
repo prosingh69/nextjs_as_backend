@@ -5,7 +5,6 @@ export async function POST(request) {
     try {
         await ConnectToDB();
 
-        // Destructure the new fields from the request
         const { name, profession, location, project, rating, review, images } = await request.json();
 
         if (!name || !rating || !review) {

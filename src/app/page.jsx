@@ -197,6 +197,9 @@ const Page = () => {
             placeholder='Write About Venetus Interiors Service......'
           ></textarea>
 
+          <label className='mb-1 font-medium'>
+            Pictures <span className='text-gray-400 font-normal text-sm'>(Optional)</span>
+          </label>
           <div className="w-full [&>label]:w-full! [&>label]:max-w-full! [&>label]:min-w-0! [&>label]:border-[#c25934]! [&>label]:border-2! [&>label]:border-dashed! hover:[&>label]:bg-orange-50! transition-colors">
             <FileUploader
               multiple={true}
