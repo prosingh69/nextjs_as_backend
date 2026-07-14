@@ -5,7 +5,8 @@ export async function POST(request) {
     try {
         await ConnectToDB();
 
-        const { name, rating, review , images} = await request.json();
+        // Destructure the new fields from the request
+        const { name, profession, location, project, rating, review, images } = await request.json();
 
         if (!name || !rating || !review) {
             return Response.json({ 
@@ -16,6 +17,9 @@ export async function POST(request) {
 
         const newReview = await Review.create({
             name,
+            profession,
+            location,
+            project,
             rating,
             review,
             images,

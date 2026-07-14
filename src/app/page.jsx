@@ -16,6 +16,9 @@ const Page = () => {
   
   const [Value, setValue] = useState({
     name: "",
+    profession: "",
+    location: "",
+    project: "",
     rating: 0,
     review: ""
   });
@@ -42,7 +45,7 @@ const Page = () => {
     e.preventDefault();
 
     if (!Value.name || Value.rating === 0 || !Value.review) {
-      toast.error("Please Fill all the fields");
+      toast.error("Please Fill all the required fields");
       return;
     }
 
@@ -89,7 +92,7 @@ const Page = () => {
       const result = await response.json();
 
       if (result.success) {
-        setValue({ name: "", rating: 0, review: "" });
+        setValue({ name: "", profession: "", location: "", project: "", rating: 0, review: "" });
         setFile(null);
         
         localStorage.setItem('isReviewSubmitted', 'true');
@@ -135,6 +138,39 @@ const Page = () => {
             required
           />
 
+          <label className='mb-1 font-medium'>
+            Profession <span className='text-gray-400 font-normal text-sm'>(Optional)</span>
+          </label>
+          <input
+            type="text"
+            value={Value.profession}
+            onChange={(e) => setValue({ ...Value, profession: e.target.value })}
+            placeholder='e.g. Doctor'
+            className='w-full border border-gray-200 bg-white text-gray-800 mb-4 py-2 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c25934]'
+          />
+
+          <label className='mb-1 font-medium'>
+            Locality & City <span className='text-gray-400 font-normal text-sm'>(Optional)</span>
+          </label>
+          <input
+            type="text"
+            value={Value.location}
+            onChange={(e) => setValue({ ...Value, location: e.target.value })}
+            placeholder='e.g. Koramangala, Bangalore'
+            className='w-full border border-gray-200 bg-white text-gray-800 mb-4 py-2 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c25934]'
+          />
+
+          <label className='mb-1 font-medium'>
+            Project Completed <span className='text-gray-400 font-normal text-sm'>(Optional)</span>
+          </label>
+          <input
+            type="text"
+            value={Value.project}
+            onChange={(e) => setValue({ ...Value, project: e.target.value })}
+            placeholder='e.g. Living Room Renovation'
+            className='w-full border border-gray-200 bg-white text-gray-800 mb-4 py-2 px-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c25934]'
+          />
+
           <label className='mb-1 font-medium'>Rate *</label>
           <div className='flex mb-4'>
             {[...Array(5)].map((_, index) => {
@@ -160,13 +196,14 @@ const Page = () => {
             className='w-full border border-gray-200 bg-white text-gray-800 rounded-md h-36 py-2 px-3 mb-4 focus:outline-none focus:ring-2 focus:ring-[#c25934] resize-y'
             placeholder='Write About Venetus Interiors Service......'
           ></textarea>
+
           <div className="w-full [&>label]:w-full! [&>label]:max-w-full! [&>label]:min-w-0! [&>label]:border-[#c25934]! [&>label]:border-2! [&>label]:border-dashed! hover:[&>label]:bg-orange-50! transition-colors">
-          <FileUploader
-            multiple={true}
-            handleChange={handleChange}
-            name="file"
-            types={fileTypes}
-          />
+            <FileUploader
+              multiple={true}
+              handleChange={handleChange}
+              name="file"
+              types={fileTypes}
+            />
           </div>
           <p className="mt-2 text-sm text-gray-500">
             {file ? `${file.length} file(s) selected` : "No files uploaded yet"}

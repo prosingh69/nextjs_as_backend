@@ -6,6 +6,15 @@ const ReviewSchema = new Schema(
       type: String,
       required: [true, "Name is required"],
     },
+    profession: {
+      type: String,
+    },
+    location: {
+      type: String,
+    },
+    project: {
+      type: String,
+    },
     rating: {
       type: Number,
       required: [true, "Rating is required"],
